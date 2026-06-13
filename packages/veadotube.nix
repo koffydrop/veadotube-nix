@@ -21,7 +21,7 @@
   unzip,
   wine64,
   overrideSrc ? null,
-  itchApiKey ? null,
+  itchApiKey ? builtins.getEnv "NIX_ITCHIO_API_KEY",
   edition ? "full",
   withWine ? true,
   winePrefix ? null,
@@ -47,7 +47,7 @@ let
     ];
   };
 
-  derivationArgs = lib.optionalAttrs (itchApiKey != null) { env.NIX_ITCHIO_API_KEY = itchApiKey; };
+  derivationArgs = lib.optionalAttrs (itchApiKey != "") { env.NIX_ITCHIO_API_KEY = itchApiKey; };
 
   full = final: prev: {
     pname = "veadotube";
