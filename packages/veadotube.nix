@@ -51,7 +51,7 @@ let
 
   full = final: prev: {
     pname = "veadotube";
-    version = "0.6-20260526a";
+    version = "0.6-20260617a";
 
     src =
       if overrideSrc == null then
@@ -59,7 +59,7 @@ let
           name = "veadotube-labs-veadotube-linux-x64.zip";
           gameUrl = "https://olmewe.itch.io/veadotube-labs";
           upload = "10658916";
-          hash = "sha256-oYHEPDcFGsanQzF9EfPsWt1icFVtv65seOJlC3q+OB0=";
+          hash = "sha256-iZ8TSgK8q083188v3Q8uIpB4GegsOFyHTHJcef+yAs8=";
           inherit derivationArgs;
           extraMessage = lib.warn ''
             The full version of veadotube is currently in early access and can't be downloaded by nix.
