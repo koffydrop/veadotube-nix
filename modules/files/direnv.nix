@@ -1,4 +1,8 @@
 { ... }:
 {
-  perSystem.files.file.".envrc".text = "use flake";
+  perSystem.files.file.".envrc".text = ''
+    watch_file modules/parts.nix
+    watch_file modules/files
+    use flake
+  '';
 }
