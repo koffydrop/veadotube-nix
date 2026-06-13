@@ -56,21 +56,30 @@ let
     src =
       if overrideSrc == null then
         fetchItchIo (src: {
+          inherit derivationArgs;
           name = "veadotube-labs-veadotube-linux-x64.zip";
           gameUrl = "https://olmewe.itch.io/veadotube-labs";
           upload = "10658916";
           hash = "sha256-iZ8TSgK8q083188v3Q8uIpB4GegsOFyHTHJcef+yAs8=";
-          inherit derivationArgs;
-          extraMessage = lib.warn ''
-            The full version of veadotube is currently in early access and can't be downloaded by nix.
-            If this fails to build, add it manually to the nix store:
+          extraMessage =
+            let
+              msg = ''
 
-              nix store add-file /path/to/${src.name}
+                ==========================================================================================
 
-            or pass it as a source override:
+                The full version of veadotube is currently in early access and can't be downloaded by nix.
+                If this fails to build, add it manually to the nix store:
 
-              veadotube.override { overrideSrc = ./path/to/${src.name}; }
-          '' "";
+                  nix store add-file /path/to/${src.name}
+
+                or pass it as a source override:
+
+                  veadotube.override { overrideSrc = ./path/to/${src.name}; }
+
+                ==========================================================================================
+              '';
+            in
+            lib.warn msg msg;
         })
       else
         overrideSrc;
