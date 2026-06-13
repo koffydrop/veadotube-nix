@@ -23,7 +23,7 @@
   overrideSrc ? null,
   itchApiKey ? builtins.getEnv "NIX_ITCHIO_API_KEY",
   edition ? "full",
-  withWine ? true,
+  withWine ? false,
   winePrefix ? null,
 }:
 
@@ -39,8 +39,7 @@ let
       freetype
       harfbuzz
       libfunnel.lib
-      # BUG: onnxruntime from nixpkgs crashes veadotube when used
-      # onnxruntime
+      onnxruntime
       rnnoise
       rtmidi
       sdl3.lib
@@ -51,7 +50,7 @@ let
 
   full = final: prev: {
     pname = "veadotube";
-    version = "0.6-20260710a";
+    version = "0.6-20261008a";
 
     src =
       if overrideSrc == null then
@@ -59,8 +58,8 @@ let
           inherit derivationArgs;
           name = "veadotube-labs-veadotube-linux-x64.zip";
           gameUrl = "https://olmewe.itch.io/veadotube-labs";
-          upload = "9855789";
-          hash = "sha256-vEYoz7uYDTuDaoHphdpJfAmMCeLMeEnQU4HdraymxRw=";
+          upload = "7973765";
+          hash = "sha256-B5lJEGfWx46SHduJNt4DtlAVH4KoO7vyELebVntrUWE=";
           extraMessage =
             let
               msg = ''
@@ -147,13 +146,13 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
     mkdir -p $out/opt/$pname $out/bin
 
-    rm lib/{rtmidi,sdl3,ffmpeg,rnnoise,libfunnel}*
+    rm lib/{rtmidi,sdl3,ffmpeg,rnnoise,libfunnel,libonnxruntime}*
 
     shopt -s extglob
     cp -r !(env-vars) $out/opt/$pname
     shopt -u extglob
 
-    ln -s ${consolidatedDeps}/* $out/opt/$pname/lib
+    ln -s ${consolidatedDeps}/lib/* $out/opt/$pname/lib
     ln -s ${ffmpeg}/bin/ffmpeg $out/opt/$pname/lib/ffmpeg
 
     mkdir -p $(magick identify -format '%wx%h\n' ${finalAttrs.icon} | sed -E "s/(.*)/''${out//\//\\/}\/share\/icons\/hicolor\/\1\/apps/g")
