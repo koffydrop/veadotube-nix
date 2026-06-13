@@ -7,7 +7,10 @@
     { pkgs, config, ... }:
     {
       devShells.default = pkgs.mkShellNoCC {
-        packages = [ config.files.writer.drv ];
+        packages = with pkgs; [
+          bashInteractive
+          just
+        ];
         shellHook = ''
           ${pkgs.lib.getExe config.files.writer.drv}
         '';
