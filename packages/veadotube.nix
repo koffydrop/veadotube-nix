@@ -58,8 +58,8 @@ let
           inherit derivationArgs;
           name = "veadotube-labs-veadotube-linux-x64.zip";
           gameUrl = "https://olmewe.itch.io/veadotube-labs";
-          upload = "7973765";
-          hash = "sha256-B5lJEGfWx46SHduJNt4DtlAVH4KoO7vyELebVntrUWE=";
+          upload = "8309318";
+          hash = "sha256-oSqA+UBFKUi8NGa/er5nKDx1WXmnwMzp8zquieIVQhc=";
           extraMessage =
             let
               msg = ''
