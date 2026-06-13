@@ -8,6 +8,9 @@
     {
       devShells.default = pkgs.mkShellNoCC {
         packages = [ config.files.writer.drv ];
+        shellHook = ''
+          ${pkgs.lib.getExe config.files.writer.drv}
+        '';
       };
     };
 }
