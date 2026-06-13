@@ -51,7 +51,7 @@ let
 
   full = final: prev: {
     pname = "veadotube";
-    version = "0.6-20260617a";
+    version = "0.6-20260710a";
 
     src =
       if overrideSrc == null then
@@ -59,8 +59,8 @@ let
           inherit derivationArgs;
           name = "veadotube-labs-veadotube-linux-x64.zip";
           gameUrl = "https://olmewe.itch.io/veadotube-labs";
-          upload = "10658916";
-          hash = "sha256-iZ8TSgK8q083188v3Q8uIpB4GegsOFyHTHJcef+yAs8=";
+          upload = "9855789";
+          hash = "sha256-vEYoz7uYDTuDaoHphdpJfAmMCeLMeEnQU4HdraymxRw=";
           extraMessage =
             let
               msg = ''
