@@ -13,9 +13,8 @@
         config.allowUnfree = true;
       };
       packages = {
-        inherit libfunnel;
-        veadotube = veadotube.full;
-        veadotube-mini = veadotube.mini;
+        inherit libfunnel veadotube;
+        veadotube-mini = veadotube.override { edition = "mini"; };
       };
     };
 }
