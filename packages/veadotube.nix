@@ -51,7 +51,7 @@ let
   editions = {
     full = {
       pname = "veadotube";
-      version = "0.6-20261008a";
+      version = "1.0-20261104a";
 
       src =
         if overrideSrc == null then
@@ -59,8 +59,8 @@ let
             inherit derivationArgs;
             name = "veadotube-labs-veadotube-linux-x64.zip";
             gameUrl = "https://olmewe.itch.io/veadotube-labs";
-            upload = "8309318";
-            hash = "sha256-oSqA+UBFKUi8NGa/er5nKDx1WXmnwMzp8zquieIVQhc=";
+            upload = "8745127";
+            hash = "sha256-VBLZbaxp2TRxwJ2P6I4kE+xFFzpLrXCI7y0UpXiJ/CQ=";
             extraMessage =
               let
                 msg = ''
